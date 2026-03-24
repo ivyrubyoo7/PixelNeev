@@ -1,0 +1,634 @@
+/* =========================================================
+   PixelNeev – Navbar.css
+   Dark glassmorphism navbar with gradient accents
+   ========================================================= */
+
+/* ── 1. DESIGN TOKENS ───────────────────────────────────── */
+:root {
+  /* Core palette */
+  --color-bg:           #07070f;
+  --color-surface:      rgba(255, 255, 255, 0.04);
+  --color-border:       rgba(255, 255, 255, 0.08);
+  --color-accent:       #6366f1;
+  --color-accent-alt:   #a855f7;
+  --color-text:         #f0f0ff;
+  --color-text-muted:   #8888aa;
+
+  /* Gradients */
+  --gradient-brand:     linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+  --gradient-glow:      linear-gradient(135deg, rgba(99,102,241,0.25) 0%, rgba(168,85,247,0.25) 100%);
+  --gradient-active:    linear-gradient(135deg, rgba(99,102,241,0.18) 0%, rgba(168,85,247,0.10) 100%);
+
+  /* Glassmorphism */
+  --glass-bg:           rgba(7, 7, 15, 0.72);
+  --glass-blur:         18px;
+  --glass-border:       rgba(255, 255, 255, 0.09);
+
+  /* Navbar geometry */
+  --navbar-height:      64px;
+  --navbar-px:          24px;
+  --navbar-radius:      0px;
+
+  /* Typography */
+  --font-display:       'Syne', sans-serif;
+  --font-body:          'DM Sans', sans-serif;
+
+  /* Timing */
+  --ease-out:           cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-fast:           160ms;
+  --dur-normal:         260ms;
+  --dur-slow:           400ms;
+}
+
+/* Light theme override */
+[data-theme="light"] {
+  --color-bg:           #f3f3ff;
+  --color-surface:      rgba(99, 102, 241, 0.05);
+  --color-border:       rgba(99, 102, 241, 0.12);
+  --color-text:         #1a1a2e;
+  --color-text-muted:   #6b6b8a;
+  --glass-bg:           rgba(243, 243, 255, 0.80);
+  --glass-border:       rgba(99, 102, 241, 0.14);
+  --gradient-glow:      linear-gradient(135deg, rgba(99,102,241,0.12) 0%, rgba(168,85,247,0.12) 100%);
+  --gradient-active:    linear-gradient(135deg, rgba(99,102,241,0.10) 0%, rgba(168,85,247,0.06) 100%);
+}
+
+
+/* ── 2. RESET / BASE ────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  transition: background-color var(--dur-normal) var(--ease-out),
+              color var(--dur-normal) var(--ease-out);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+  color: inherit;
+}
+
+
+/* ── 3. NAVBAR SHELL ────────────────────────────────────── */
+.navbar {
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur)) saturate(180%);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(180%);
+  border-bottom: 1px solid var(--glass-border);
+  box-shadow: 0 1px 40px rgba(99, 102, 241, 0.08),
+              0 0 0 0 transparent;
+  transition: background var(--dur-normal) var(--ease-out),
+              border-color var(--dur-normal) var(--ease-out),
+              box-shadow var(--dur-normal) var(--ease-out);
+}
+
+/* Subtle top accent line */
+.navbar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--gradient-brand);
+  opacity: 0.6;
+}
+
+.navbar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--navbar-height);
+  max-width: min(92vw, 1600px);
+  margin: 0 auto;
+  padding: 0 var(--navbar-px);
+  gap: 16px;
+}
+
+
+/* ── 4. BRAND / LOGO ────────────────────────────────────── */
+.navbar__brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  outline: none;
+}
+
+.navbar__brand-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform var(--dur-normal) var(--ease-out),
+              filter var(--dur-normal) var(--ease-out);
+}
+
+.navbar__brand:hover .navbar__brand-icon {
+  transform: rotate(-8deg) scale(1.08);
+  filter: drop-shadow(0 0 8px rgba(99, 102, 241, 0.7));
+}
+
+.navbar__brand-name {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.25rem;
+  letter-spacing: -0.02em;
+  background: var(--gradient-brand);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: filter var(--dur-normal) var(--ease-out);
+}
+
+.navbar__brand:hover .navbar__brand-name {
+  filter: brightness(1.15) drop-shadow(0 0 12px rgba(99, 102, 241, 0.5));
+}
+
+.navbar__brand:focus-visible .navbar__brand-name {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+
+/* ── 5. DESKTOP NAV LINKS ───────────────────────────────── */
+.navbar__links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.navbar__link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 14px;
+  border-radius: 10px;
+  font-size: clamp(0.99rem, 1.2vw, 1.2rem);
+  font-weight: 500;
+  color: var(--color-text-muted);
+  transition: color var(--dur-fast) var(--ease-out),
+              background var(--dur-fast) var(--ease-out),
+              box-shadow var(--dur-fast) var(--ease-out);
+  outline: none;
+}
+
+.navbar__link-icon {
+  display: flex;
+  align-items: center;
+  opacity: 0.7;
+  transition: opacity var(--dur-fast) var(--ease-out),
+              transform var(--dur-fast) var(--ease-out);
+}
+
+/* Hover state */
+.navbar__link:hover {
+  color: var(--color-text);
+  background: var(--color-surface);
+}
+
+.navbar__link:hover .navbar__link-icon {
+  opacity: 1;
+  transform: translateY(-1px);
+}
+
+/* Active state */
+.navbar__link.is-active,
+.navbar__link[aria-current="page"] {
+  color: var(--color-text);
+  background: var(--gradient-active);
+  box-shadow: inset 0 0 0 1px rgba(99, 102, 241, 0.25);
+}
+
+.navbar__link.is-active .navbar__link-icon,
+.navbar__link[aria-current="page"] .navbar__link-icon {
+  opacity: 1;
+}
+
+/* Active underline pip */
+.navbar__link.is-active::after,
+.navbar__link[aria-current="page"]::after {
+  content: '';
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 16px;
+  height: 2px;
+  border-radius: 999px;
+  background: var(--gradient-brand);
+}
+
+/* Focus ring */
+.navbar__link:focus-visible {
+  box-shadow: 0 0 0 2px var(--color-accent);
+}
+
+
+/* ── 6. RIGHT CONTROLS ──────────────────────────────────── */
+.navbar__controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+
+/* ── 6a. Theme Toggle ───────────────────────────────────── */
+.navbar__theme-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  color: var(--color-text-muted);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  transition: color var(--dur-fast) var(--ease-out),
+              background var(--dur-fast) var(--ease-out),
+              box-shadow var(--dur-fast) var(--ease-out),
+              transform var(--dur-fast) var(--ease-out);
+  overflow: hidden;
+}
+
+.navbar__theme-btn:hover {
+  color: var(--color-text);
+  background: var(--gradient-glow);
+  box-shadow: 0 0 16px rgba(99, 102, 241, 0.25);
+  transform: scale(1.05);
+}
+
+.navbar__theme-btn:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.navbar__theme-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity var(--dur-fast), transform var(--dur-fast) var(--ease-out);
+}
+
+/* Show moon in dark mode, sun in light mode */
+[data-theme="dark"]  .navbar__theme-icon--dark  { display: flex; }
+[data-theme="dark"]  .navbar__theme-icon--light { display: none; }
+[data-theme="light"] .navbar__theme-icon--dark  { display: none; }
+[data-theme="light"] .navbar__theme-icon--light { display: flex; }
+
+
+/* ── 6b. Avatar ─────────────────────────────────────────── */
+.navbar__avatar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--gradient-brand);
+  transition: transform var(--dur-fast) var(--ease-out),
+              box-shadow var(--dur-fast) var(--ease-out);
+  overflow: visible;
+}
+
+.navbar__avatar-letter {
+  font-family: var(--font-display);
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0;
+  position: relative;
+  z-index: 1;
+  line-height: 1;
+}
+
+/* Glow ring on hover */
+.navbar__avatar-ring {
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    #6366f1,
+    #a855f7,
+    #ec4899,
+    #6366f1
+  );
+  z-index: -1;
+  opacity: 0;
+  filter: blur(4px);
+  transition: opacity var(--dur-fast) var(--ease-out),
+              transform var(--dur-fast) var(--ease-out);
+}
+
+.navbar__avatar:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.3),
+              0 0 20px rgba(99, 102, 241, 0.35);
+}
+
+.navbar__avatar:hover .navbar__avatar-ring {
+  opacity: 0.8;
+  animation: spin-ring 2s linear infinite;
+}
+
+.navbar__avatar:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+@keyframes spin-ring {
+  to { transform: rotate(360deg); }
+}
+
+/* ── 6c. Login Button ───────────────────────────────────── */
+.navbar__login-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 22px;
+  border-radius: 10px; /* Matches the theme toggle button radius */
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: #fff;
+  background: var(--gradient-brand);
+  border: none;
+  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.25);
+  transition: transform var(--dur-fast) var(--ease-out),
+              box-shadow var(--dur-fast) var(--ease-out),
+              filter var(--dur-fast) var(--ease-out);
+}
+
+.navbar__login-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 22px rgba(99, 102, 241, 0.4);
+  filter: brightness(1.1);
+}
+
+.navbar__login-btn:active {
+  transform: translateY(0);
+  filter: brightness(0.95);
+}
+
+.navbar__login-btn:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+/* ── 7. HAMBURGER ───────────────────────────────────────── */
+.navbar__hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  padding: 8px;
+  transition: background var(--dur-fast) var(--ease-out);
+}
+
+.navbar__hamburger:hover {
+  background: var(--gradient-glow);
+  box-shadow: 0 0 16px rgba(99, 102, 241, 0.2);
+}
+
+.navbar__hamburger:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.navbar__hamburger-line {
+  display: block;
+  width: 18px;
+  height: 2px;
+  border-radius: 999px;
+  background: var(--color-text-muted);
+  transform-origin: center;
+  transition: transform var(--dur-normal) var(--ease-out),
+              opacity var(--dur-normal) var(--ease-out),
+              background var(--dur-fast) var(--ease-out),
+              width var(--dur-normal) var(--ease-out);
+}
+
+.navbar__hamburger:hover .navbar__hamburger-line {
+  background: var(--color-text);
+}
+
+/* Open state – morphs into × */
+.navbar__hamburger[aria-expanded="true"] .navbar__hamburger-line:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+  background: var(--color-accent);
+}
+.navbar__hamburger[aria-expanded="true"] .navbar__hamburger-line:nth-child(2) {
+  opacity: 0;
+  width: 0;
+}
+.navbar__hamburger[aria-expanded="true"] .navbar__hamburger-line:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+  background: var(--color-accent);
+}
+
+
+/* ── 8. MOBILE DROPDOWN ─────────────────────────────────── */
+.navbar__mobile-menu {
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  pointer-events: none;
+  border-top: 1px solid transparent;
+  transition: max-height var(--dur-slow) var(--ease-out),
+              opacity var(--dur-normal) var(--ease-out),
+              border-color var(--dur-normal) var(--ease-out);
+}
+
+.navbar__mobile-menu.is-open {
+  max-height: 320px;
+  opacity: 1;
+  pointer-events: auto;
+  border-top-color: var(--glass-border);
+}
+
+.navbar__mobile-links {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 12px 16px 16px;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.navbar__mobile-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 14px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  transition: color var(--dur-fast) var(--ease-out),
+              background var(--dur-fast) var(--ease-out),
+              transform var(--dur-fast) var(--ease-out);
+  outline: none;
+}
+
+.navbar__mobile-link:hover {
+  color: var(--color-text);
+  background: var(--color-surface);
+  transform: translateX(4px);
+}
+
+.navbar__mobile-link.is-active {
+  color: var(--color-text);
+  background: var(--gradient-active);
+  box-shadow: inset 0 0 0 1px rgba(99, 102, 241, 0.22);
+}
+
+.navbar__mobile-link:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* Staggered slide-in for mobile items */
+.navbar__mobile-menu.is-open .navbar__mobile-link:nth-child(1) { animation: slide-in var(--dur-normal) var(--ease-out) 40ms  both; }
+.navbar__mobile-menu.is-open .navbar__mobile-link:nth-child(2) { animation: slide-in var(--dur-normal) var(--ease-out) 80ms  both; }
+.navbar__mobile-menu.is-open .navbar__mobile-link:nth-child(3) { animation: slide-in var(--dur-normal) var(--ease-out) 120ms both; }
+.navbar__mobile-menu.is-open .navbar__mobile-link:nth-child(4) { animation: slide-in var(--dur-normal) var(--ease-out) 160ms both; }
+
+@keyframes slide-in {
+  from { opacity: 0; transform: translateX(-10px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+
+/* ── 9. RESPONSIVE BREAKPOINTS ──────────────────────────── */
+@media (max-width: 768px) {
+  .navbar__links {
+    display: none;
+  }
+
+  .navbar__hamburger {
+    display: flex;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --navbar-px: 16px;
+  }
+
+  .navbar__login-btn {
+    padding: 6px 14px;
+    font-size: 0.8rem;
+  }
+
+  .navbar__brand-name {
+    font-size: 1.1rem;
+  }
+
+  .navbar__theme-btn {
+    width: 32px;
+    height: 32px;
+  }
+
+  .navbar__avatar {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+
+/* ── 10. DEMO PAGE CONTENT ──────────────────────────────── */
+.demo-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - var(--navbar-height));
+  padding: 24px;
+}
+
+.demo-hint {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  text-align: center;
+  border: 1px dashed var(--color-border);
+  border-radius: 12px;
+  padding: 20px 32px;
+  background: var(--color-surface);
+}
+
+/* Avatar Dropdown Styles */
+.navbar__dropdown {
+    position: absolute;
+    top: 110%;
+    right: 0;
+    background: rgba(25, 25, 30, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 8px;
+    padding: 8px 0;
+    min-width: 120px;
+    display: none; /* Hidden by default */
+    flex-direction: column;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    z-index: 100;
+}
+
+.navbar__dropdown.is-open {
+    display: flex;
+}
+
+.navbar__dropdown-item {
+    background: transparent;
+    border: none;
+    color: #fff;
+    padding: 8px 16px;
+    text-align: left;
+    font-family: inherit;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.navbar__dropdown-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #a855f7; /* Your PixelNeev purple accent */
+}
+

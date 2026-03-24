@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PixelNeev - Profile</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../../navbar/Navbar.css">
+
+  <link rel="stylesheet" href="../css/Main.css">
+  <link rel="stylesheet" href="../css/Profile.css">
+</head>
+
+<body>
+
+  <div class="navbar-wrapper">
+    <div id="navbar-container"></div>
+  </div>
+
+
+  <div class="page-content-wrapper">
+    <main class="profile-page" role="main">
+
+      <header class="profile-header">
+
+        <div class="profile-left">
+          <div class="profile-avatar">D</div>
+        </div>
+
+        <div class="profile-right">
+
+          <div class="profile-top">
+            <h2>Daniel</h2>
+            <button class="follow-btn">Edit Profile</button>
+          </div>
+
+          <div class="profile-stats">
+            <span><b>12</b> Projects</span>
+            <span><b>1.2k</b> Followers</span>
+            <span><b>120</b> Following</span>
+          </div>
+
+          <div class="profile-bio">
+            <p><b>Full Stack Developer</b></p>
+            <p>Building scalable apps 🚀 | SpringBoot • React • AI</p>
+          </div>
+
+          <div class="profile-tech">
+            <span class="tech-badge" data-type="frontend">React</span>
+            <span class="tech-badge" data-type="backend">SpringBoot</span>
+            <span class="tech-badge" data-type="database">MongoDB</span>
+            <span class="tech-badge" data-type="devops">Docker</span>
+          </div>
+
+        </div>
+      </header>
+
+      <section class="profile-highlights">
+        <div class="highlight">
+          <img src="https://picsum.photos/100?1" alt="Highlight">
+          <p>PixelNeev</p>
+        </div>
+        <div class="highlight">
+          <img src="https://picsum.photos/100?2" alt="Highlight">
+          <p>AI Tool</p>
+        </div>
+        <div class="highlight">
+          <img src="https://picsum.photos/100?3" alt="Highlight">
+          <p>Portfolio</p>
+        </div>
+      </section>
+
+      <nav class="profile-tabs" aria-label="Profile tabs">
+        <button class="tab active">Projects</button>
+        <button class="tab">Saved</button>
+        <button class="tab">Tagged</button>
+      </nav>
+
+      <section class="profile-grid">
+
+        <div class="grid-item">
+          <img src="https://picsum.photos/400?1" alt="Project 1">
+        </div>
+
+        <div class="grid-item">
+          <img src="https://picsum.photos/400?2" alt="Project 2">
+        </div>
+
+        <div class="grid-item">
+          <img src="https://picsum.photos/400?3" alt="Project 3">
+        </div>
+
+        <div class="grid-item">
+          <img src="https://picsum.photos/400?4" alt="Project 4">
+        </div>
+
+        <div class="grid-item">
+          <img src="https://picsum.photos/400?5" alt="Project 5">
+        </div>
+
+        <div class="grid-item">
+          <img src="https://picsum.photos/400?6" alt="Project 6">
+        </div>
+
+      </section>
+
+    </main>
+  </div>
+  <script src="../../navbar/Navbar.js"></script>
+
+  <script>
+    // Simulate user login for the navbar avatar
+    if (window.PixelNeevNavbar) {
+      window.PixelNeevNavbar.setUsername("Daniel");
+    }
+  </script>
+
+  <script src="../js/Profile.js"></script>
+</body>
+</html>

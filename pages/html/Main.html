@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PixelNeev – Home Feed</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Navbar styles (already exists in project) -->
+    <link rel="stylesheet" href="../../navbar/Navbar.css" />
+    <!-- Feed styles -->
+    <link rel="stylesheet" href="../css/Main.css" />
+  
+    <link rel="stylesheet" href="../css/Main.css" />
+
+  </head>
+  <body>
+
+    <!-- Navbar will load here -->
+    <div id="navbar-container"></div>
+
+    <!-- ░░ PAGE BODY ░░ -->
+    <div class="page-layout">
+
+      <!-- ── MAIN FEED ── -->
+      <main class="feed-wrapper" id="feedWrapper" role="main">
+
+        <!-- Feed header -->
+        <div class="feed-header">
+          <h1 class="feed-header__title">Home Feed</h1>
+          <div class="feed-header__tabs" role="tablist" aria-label="Feed filters">
+            <button class="feed-tab is-active" role="tab" aria-selected="true"  data-filter="all">For You</button>
+            <button class="feed-tab"            role="tab" aria-selected="false" data-filter="following">Following</button>
+            <button class="feed-tab"            role="tab" aria-selected="false" data-filter="trending">Trending</button>
+          </div>
+        </div>
+
+        <!-- Feed list – populated by JS -->
+        <section class="feed" id="feed" aria-label="Project feed" aria-live="polite">
+          <!-- Skeleton loaders shown before JS runs -->
+          <div class="card-skeleton" aria-hidden="true"></div>
+          <div class="card-skeleton" aria-hidden="true"></div>
+          <div class="card-skeleton" aria-hidden="true"></div>
+        </section>
+
+        <!-- Load more -->
+        <div class="feed-load-more">
+          <button class="feed-load-btn" id="loadMoreBtn" aria-label="Load more projects">
+            Load more projects
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+        </div>
+      </main>
+
+      <!-- ── RIGHT SIDEBAR ── -->
+      <aside class="sidebar sidebar--right" aria-label="Trending and suggestions">
+
+        <!-- Search -->
+        <div class="sidebar__search">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="search" class="sidebar__search-input" placeholder="Search projects…" aria-label="Search projects" />
+        </div>
+
+        <!-- Trending tags -->
+        <div class="sidebar__widget">
+          <h2 class="sidebar__widget-title">Trending Tags</h2>
+          <ul class="trending-tags" role="list" id="trendingTags">
+            <!-- Populated by JS -->
+          </ul>
+        </div>
+
+        <!-- Suggested devs -->
+        <div class="sidebar__widget">
+          <h2 class="sidebar__widget-title">Suggested Devs</h2>
+          <ul class="suggested-devs" role="list" id="suggestedDevs">
+            <!-- Populated by JS -->
+          </ul>
+        </div>
+      </aside>
+    </div>
+
+    <!-- ░░ PROJECT DETAIL MODAL ░░ -->
+    <div
+      class="modal-backdrop"
+      id="modalBackdrop"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modalTitle"
+      aria-hidden="true"
+    >
+      <article class="modal" id="modal">
+        <button class="modal__close" id="modalClose" aria-label="Close modal">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+
+        <!-- Modal content injected by JS -->
+        <div class="modal__body" id="modalBody"></div>
+      </article>
+    </div>
+
+    <!-- ░░ TOAST ░░ -->
+    <div class="toast-region" id="toastRegion" aria-live="assertive" aria-atomic="true"></div>
+
+    <!-- Scripts -->
+    <script type="module" src="../../navbar/Navbar.js"></script>
+    <script src="../js/Main.js"></script>
+  </body>
+</html>

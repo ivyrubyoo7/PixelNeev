@@ -1,0 +1,301 @@
+/* =========================================================
+   PixelNeev – Auth.css (Sliding Window Animation)
+   ========================================================= */
+
+.auth-page-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - var(--navbar-height));
+  padding: 40px 20px;
+}
+
+/* ── MAIN CONTAINER ── */
+.auth-box {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  position: relative;
+  overflow: hidden;
+  width: 860px;
+  max-width: 100%;
+  min-height: 580px;
+}
+
+/* ── FORM CONTAINERS ── */
+.form-container {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  transition: all 0.6s ease-in-out;
+}
+
+.auth-form {
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 50px;
+  height: 100%;
+  text-align: center;
+}
+
+/* Sign In Container sits on the Left */
+.sign-in-container {
+  left: 0;
+  width: 50%;
+  z-index: 2;
+  opacity: 1;
+  transition: all 0.6s ease-in-out;
+}
+
+/* Sign Up Container sits on the Left too, but hidden underneath initially */
+.sign-up-container {
+  left: 0;
+  width: 50%;
+  z-index: 1;
+  opacity: 0; /* Hidden by default */
+  transition: all 0.6s ease-in-out;
+}
+
+/* ── TYPOGRAPHY & INPUTS ── */
+.auth-title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 2rem;
+  color: var(--color-text);
+  margin-bottom: 8px;
+}
+
+.auth-subtitle {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  margin-bottom: 24px;
+}
+
+.auth-input {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  margin: 8px 0;
+  width: 100%;
+  font-family: var(--font-body);
+  transition: border-color var(--dur-fast), box-shadow var(--dur-fast);
+  outline: none;
+}
+
+.auth-input:focus {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+}
+
+.auth-forgot {
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+  margin: 16px 0;
+  transition: color var(--dur-fast);
+}
+
+.auth-forgot:hover { color: var(--color-accent); }
+
+/* ── SOCIAL BUTTONS & DIVIDERS ── */
+.auth-btn-social {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  padding: 12px;
+  margin-top: 16px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background var(--dur-fast), border-color var(--dur-fast), transform var(--dur-fast);
+}
+
+.auth-btn-social:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(99, 102, 241, 0.4);
+  transform: translateY(-1px);
+}
+
+.auth-btn-social svg {
+  flex-shrink: 0;
+}
+
+.auth-divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  margin: 20px 0;
+  color: var(--color-text-muted);
+  font-size: 0.8125rem;
+}
+
+.auth-divider::before,
+.auth-divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.auth-divider::before {
+  margin-right: 14px;
+}
+
+.auth-divider::after {
+  margin-left: 14px;
+}
+
+/* ── BUTTONS ── */
+.auth-btn {
+  border-radius: var(--radius-full);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.9375rem;
+  padding: 14px 40px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: transform 80ms ease-in, box-shadow var(--dur-fast);
+  margin-top: 10px;
+}
+
+.auth-btn:active { transform: scale(0.95); }
+
+.auth-btn--primary {
+  background: var(--gradient-brand);
+  color: #fff;
+  border: none;
+  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+}
+
+.auth-btn--ghost {
+  background: transparent;
+  color: #fff;
+  border: 2px solid #fff;
+}
+
+/* ── THE SLIDING OVERLAY (The Window Cover) ── */
+.overlay-container {
+  position: absolute;
+  top: 0;
+  left: 50%; /* Starts on the right side */
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  transition: transform 0.6s ease-in-out;
+  z-index: 100;
+}
+
+.overlay {
+  background: var(--gradient-brand);
+  color: #fff;
+  position: relative;
+  left: -100%;
+  height: 100%;
+  width: 200%; /* Double width so it can hold both text panels */
+  transform: translateX(0);
+  transition: transform 0.6s ease-in-out;
+}
+
+.overlay-panel {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 40px;
+  text-align: center;
+  top: 0;
+  height: 100%;
+  width: 50%;
+  transition: transform 0.6s ease-in-out;
+}
+
+.overlay-title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 2.2rem;
+  margin-bottom: 16px;
+}
+
+.overlay-desc {
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.6;
+  margin-bottom: 30px;
+  opacity: 0.9;
+}
+
+.overlay-left {
+  transform: translateX(-20%);
+}
+
+.overlay-right {
+  right: 0;
+  transform: translateX(0);
+}
+
+/* ── ANIMATION MAGIC (When 'is-sliding-active' class is added) ── */
+
+/* Move the Sign In out of the way */
+/* Move the Sign In out of the way AND fade it out */
+.auth-box.is-sliding-active .sign-in-container {
+  transform: translateX(100%);
+  opacity: 0; /* This fades out the overlapping text! */
+  z-index: 1;
+}
+
+/* Move the Sign Up into view AND fade it in */
+.auth-box.is-sliding-active .sign-up-container {
+  transform: translateX(100%);
+  opacity: 1;
+  z-index: 5;
+}
+
+/* Move the overlay container to the Left */
+.auth-box.is-sliding-active .overlay-container {
+  transform: translateX(-100%);
+}
+
+/* Move the background inside the overlay to stay correctly aligned */
+.auth-box.is-sliding-active .overlay {
+  transform: translateX(50%);
+}
+
+/* Text animations */
+.auth-box.is-sliding-active .overlay-left {
+  transform: translateX(0);
+}
+
+.auth-box.is-sliding-active .overlay-right {
+  transform: translateX(20%);
+}
+
+
+/* ── RESPONSIVE FIX FOR MOBILE ── */
+/* On small screens, side-by-side sliding breaks. We stack them instead. */
+@media (max-width: 768px) {
+  .auth-box { min-height: 700px; display: flex; flex-direction: column; }
+  .form-container { width: 100%; height: auto; position: relative; padding: 40px 0; }
+  .sign-in-container { top: 0; left: 0; }
+  .sign-up-container { display: none; } /* Hide sign up by default on mobile */
+  
+  .overlay-container { display: none; } /* Hide the sliding visual on mobile */
+
+  /* Mobile toggle logic */
+  .auth-box.is-mobile-signup .sign-in-container { display: none; }
+  .auth-box.is-mobile-signup .sign-up-container { display: block; opacity: 1; transform: none; left: 0; }
+}

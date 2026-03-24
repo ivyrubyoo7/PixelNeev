@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PixelNeev – Sign In / Register</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../../navbar/Navbar.css" />
+    <link rel="stylesheet" href="../css/Main.css" />
+    <link rel="stylesheet" href="../css/Auth.css" />
+  </head>
+  <body>
+
+    <div id="navbar-container"></div>
+
+    <main class="auth-page-wrapper" role="main">
+      
+      <div class="auth-box" id="authBox">
+        
+        <div class="form-container sign-up-container">
+          <form class="auth-form" id="signUpForm">
+            <h1 class="auth-title">Create Account</h1>
+            
+            <button type="button" class="auth-btn-social" id="googleSignUpBtn">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="20px" height="20px">
+                <path fill="#FFC107" d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12c0-6.627,5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24c0,11.045,8.955,20,20,20c11.045,0,20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z"/>
+                <path fill="#FF3D00" d="M6.306,14.691l6.571,4.819C14.655,15.108,18.961,12,24,12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C16.318,4,9.656,8.337,6.306,14.691z"/>
+                <path fill="#4CAF50" d="M24,44c5.166,0,9.86-1.977,13.409-5.192l-6.19-5.238C29.211,35.091,26.715,36,24,36c-5.202,0-9.619-3.317-11.283-7.946l-6.522,5.025C9.505,39.556,16.227,44,24,44z"/>
+                <path fill="#1976D2" d="M43.611,20.083H42V20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z"/>
+              </svg>
+              Continue with Google
+            </button>
+
+            <div class="auth-divider"><span>or register with email</span></div>
+            
+            <input type="text" class="auth-input" placeholder="Display Name" required />
+            <input type="email" class="auth-input" placeholder="Email Address" required />
+            <input type="password" class="auth-input" placeholder="Password" required />
+            
+            <button class="auth-btn auth-btn--primary" type="submit">Sign Up</button>
+          </form>
+        </div>
+
+        <div class="form-container sign-in-container">
+          <form class="auth-form" id="signInForm">
+            <h1 class="auth-title">Sign In</h1>
+            
+            <button type="button" class="auth-btn-social" id="googleSignInBtn">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="20px" height="20px">
+                <path fill="#FFC107" d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12c0-6.627,5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24c0,11.045,8.955,20,20,20c11.045,0,20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z"/>
+                <path fill="#FF3D00" d="M6.306,14.691l6.571,4.819C14.655,15.108,18.961,12,24,12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C16.318,4,9.656,8.337,6.306,14.691z"/>
+                <path fill="#4CAF50" d="M24,44c5.166,0,9.86-1.977,13.409-5.192l-6.19-5.238C29.211,35.091,26.715,36,24,36c-5.202,0-9.619-3.317-11.283-7.946l-6.522,5.025C9.505,39.556,16.227,44,24,44z"/>
+                <path fill="#1976D2" d="M43.611,20.083H42V20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z"/>
+              </svg>
+              Continue with Google
+            </button>
+
+            <div class="auth-divider"><span>or sign in with email</span></div>
+            
+            <input type="email" class="auth-input" placeholder="Email Address" required />
+            <input type="password" class="auth-input" placeholder="Password" required />
+            <a href="#" class="auth-forgot">Forgot your password?</a>
+            
+            <button class="auth-btn auth-btn--primary" type="submit">Sign In</button>
+          </form>
+        </div>
+
+        <div class="overlay-container">
+          <div class="overlay">
+            
+            <div class="overlay-panel overlay-left">
+              <h2 class="overlay-title">Welcome Back!</h2>
+              <p class="overlay-desc">To keep connected with us please login with your personal info</p>
+              <button class="auth-btn auth-btn--ghost" id="signInTrigger">Sign In</button>
+            </div>
+            
+            <div class="overlay-panel overlay-right">
+              <h2 class="overlay-title">Hello, Developer!</h2>
+              <p class="overlay-desc">Enter your personal details and start your journey with us</p>
+              <button class="auth-btn auth-btn--ghost" id="signUpTrigger">Register</button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </main>
+
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+      import { 
+        getAuth, 
+        signInWithEmailAndPassword, 
+        createUserWithEmailAndPassword,
+        GoogleAuthProvider,
+        signInWithPopup 
+      } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+      import { getFirestore } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+      // Your Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyDKs7xgTGLb1y5Vjy7lzEv4IQhUqBFfAJc",
+        authDomain: "pixelneev.firebaseapp.com",
+        projectId: "pixelneev",
+        storageBucket: "pixelneev.firebasestorage.app",
+        messagingSenderId: "80609130066",
+        appId: "1:80609130066:web:79fa789bd34aef1edd118b"
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const auth = getAuth(app);
+      const db = getFirestore(app);
+      
+      // Initialize Google Provider
+      const googleProvider = new GoogleAuthProvider();
+
+      // Export to window so Auth.js can see them
+      window.pixelAuth = auth;
+      window.pixelDb = db;
+      window.pixelGoogleProvider = googleProvider;
+      window.firebaseMethods = { 
+        signInWithEmailAndPassword, 
+        createUserWithEmailAndPassword,
+        signInWithPopup
+      };
+    </script>
+
+    <script src="../../navbar/Navbar.js"></script>
+    <script src="../js/Auth.js"></script>
+  </body>
+</html>

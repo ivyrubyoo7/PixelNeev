@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PixelNeev - Projects</title>
+
+  <link rel="stylesheet" href="../../navbar/Navbar.css">
+
+  <link rel="stylesheet" href="../css/Main.css">
+  <link rel="stylesheet" href="../css/Project.css">
+</head>
+<body>
+
+  <div id="navbar-container"></div>
+
+  <div class="container">
+
+    <div class="profile">
+      <div class="profile-info">
+        <div class="avatar">D</div>
+        <div>
+          <h2>Daniel</h2>
+          <p>Full Stack Developer | 2 Years Experience</p>
+        </div>
+      </div>
+      <button>Edit Profile</button>
+    </div>
+
+    <div class="actions">
+      <button>+ Add Project</button>
+      <button>Create Portfolio</button>
+      <button>Download PDF</button>
+    </div>
+
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="Search projects...">
+    </div>
+
+    <div class="grid" id="projectGrid">
+      
+      </div>
+
+  </div>
+
+  <script src="../../navbar/Navbar.js"></script>
+
+  <script type="module" src="../js/Project.js"></script>
+
+  <script>
+    if (window.PixelNeevNavbar) {
+      PixelNeevNavbar.setUsername("Daniel");
+    }
+  </script>
+
+</body>
+</html>

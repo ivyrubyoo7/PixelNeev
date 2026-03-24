@@ -1,0 +1,181 @@
+/* ================================
+   PixelNeev Projects Page Theme
+   (Standard Full-Page Scroll)
+================================ */
+
+/* Use same base tokens */
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+}
+
+/* ── PAGE LAYOUT ── */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  
+  /* Use padding to push everything safely below the 64px navbar */
+  padding: 100px 20px 60px;
+  
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── PROFILE SECTION ── */
+.profile {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  padding: 20px;
+  border-radius: var(--radius-lg);
+}
+
+.avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--gradient-brand);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 20px;
+}
+
+/* ── ACTIONS & SEARCH ── */
+.actions {
+  margin: 20px 0;
+  display: flex;
+  gap: 10px;
+}
+
+button {
+  padding: 10px 16px;
+  border-radius: var(--radius-full);
+  background: var(--gradient-brand);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.85rem;
+  box-shadow: 0 4px 20px rgba(99, 102, 241, 0.3);
+  transition: all var(--dur-fast) var(--ease-out);
+}
+
+button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 25px rgba(99, 102, 241, 0.45);
+}
+
+.search-bar {
+  margin-bottom: 20px;
+}
+
+input {
+  width: 100%;
+  padding: 12px 20px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text);
+  transition: border-color var(--dur-fast), box-shadow var(--dur-fast);
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+}
+
+/* ── GRID (STANDARD SCROLL) ── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+  padding-top: 10px;
+}
+
+/* ── PROJECT CARDS ── */
+.card {
+  position: relative;
+  background: var(--gradient-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: all var(--dur-normal) var(--ease-out);
+}
+
+.card:hover {
+  background: var(--gradient-glow);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+}
+
+.card-content {
+  padding: 14px;
+}
+
+.card-content h3 {
+  font-family: var(--font-display);
+  font-size: 1rem;
+}
+
+/* Status Badge */
+.status {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  padding: 5px 10px;
+  border-radius: var(--radius-full);
+  font-size: 0.7rem;
+  font-weight: 600;
+  backdrop-filter: blur(8px);
+}
+
+.live { background: rgba(34, 197, 94, 0.85); color: #fff; }
+.local { background: rgba(245, 158, 11, 0.85); color: #fff; }
+.draft { background: rgba(148, 163, 184, 0.85); color: #fff; }
+
+/* Card Actions */
+.card-actions {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+  border-top: 1px solid var(--color-border);
+}
+
+.card-actions button {
+  background: transparent;
+  color: var(--color-text-muted);
+  font-size: 0.8rem;
+  padding: 6px 10px;
+  border-radius: var(--radius-sm);
+  box-shadow: none; 
+}
+
+.card-actions button:hover {
+  background: var(--color-surface);
+  color: var(--color-text);
+  transform: none;
+}
+
+/* ================================
+   OVERRIDES (For HTML cleanliness)
+================================ */
+.feed-wrapper {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+.page-layout {
+  display: block !important;
+}
