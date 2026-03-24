@@ -4,12 +4,12 @@ import { getFirestore, collection, addDoc, updateDoc, deleteDoc, doc, onSnapshot
 
 // ⚠️ Paste your config from Firebase Console here
 const firebaseConfig = {
-  apiKey: "AIzaSyDKs7xgTGLb1y5Vjy7lzEv4IQhUqBFfAJc",
-  authDomain: "pixelneev.firebaseapp.com",
-  projectId: "pixelneev",
-  storageBucket: "pixelneev.firebasestorage.app",
-  messagingSenderId: "80609130066",
-  appId: "1:80609130066:web:79fa789bd34aef1edd118b"
+  apiKey: "",
+  authDomain: "",
+  projectId: "",
+  storageBucket: "",
+  messagingSenderId: "",
+  appId: ""
 };
 
 const app = initializeApp(firebaseConfig);
